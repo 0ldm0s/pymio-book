@@ -369,5 +369,8 @@ env FLASK_APP=mio.shell flask cli exe -cls=cli.WorkMan.Daemon.hello
 
 `cli.WorkMan.Daemon.hello`中`cli`表示包名，`WorkMan`是py文件的文件名，`Daemon`则为要调用的类的类名，最后`hello`为类里面的函数名。
 
-更多细节请阅读cli章节
+更多细节请阅读[cli章节](cli.md)
 
+生产环境的优化，请参阅[优化章节](optimize.md)
+
+快速搭建数据库请参阅[数据库章节](database.md)
