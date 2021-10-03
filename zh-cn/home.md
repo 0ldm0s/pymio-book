@@ -305,9 +305,14 @@ cd <项目根目录>
 # 启动模式二选一
 # 默认启动
 python mio/pymio.py
+# 如无异常，应该看到类似的提示文字
+2021-10-04 06:39:30,804 [PID 78559] [INFO] PyMio -> Initializing the system......profile: default
+2021-10-04 06:39:30,807 [PID 78559] [INFO] PyMio -> WebServer listen in http://127.0.0.1:5000
 ```
 
 #### 启动参数
+
+除了ds和host为互斥外，其他参数均可同时传入。
 
 | 名称       | 备注                                                         |
 | ---------- | ------------------------------------------------------------ |
@@ -317,4 +322,52 @@ python mio/pymio.py
 | config     | 选择对应的环境配置，可选：`development`开发环境（默认）、`testing`测试环境和`production`生产环境 |
 | pid        | 指定pid文件的路径。如不使用可不传。                          |
 | ds         | 指定unix socket文件路径，仅推荐用于FreeBSD系统。启用该模式会直接禁用host模式，请慎用。 |
+
+### 启动命令行
+
+虽然并无限制命令行的类名（即文件夹路径），但基于方便阅读的考虑，建议统一放置于cli目录下。
+
+**注意：flask 2.0的启动逻辑同1.x不同，考虑到性能，因此不再兼容旧版flask 1.x。**
+
+假定未建立cli目录（模板项目已自带，可跳过这个步骤）
+
+```shell
+# 请自行替换为实际的项目根目录
+cd <项目根目录>
+mkdir cli
+touch cli/__init__.py
+touch cli/WorkMan.py
+```
+
+编辑`cli/WorkMan.py`
+
+```python
+# -*- coding: utf-8 -*-
+import sys
+
+
+class Daemon(object):
+    def hello(self, app, kwargs):
+        sys_ver = sys.version
+        print("Powered by PyMio.\nPython: {}".format(sys_ver))
+
+```
+
+#### *nix下启动
+
+```shell
+# 请自行替换为实际的项目根目录
+cd <项目根目录>
+env FLASK_APP=mio.shell flask cli exe -cls=cli.WorkMan.Daemon.hello
+```
+
+`env`指令设置了一个临时的环境变量`FLASK_APP`来启动flask
+
+`cli exe`表示启动pymio框架的cli模式
+
+`-cls`则指定的了要启动的函数
+
+`cli.WorkMan.Daemon.hello`中`cli`表示包名，`WorkMan`是py文件的文件名，`Daemon`则为要调用的类的类名，最后`hello`为类里面的函数名。
+
+更多细节请阅读cli章节
 
