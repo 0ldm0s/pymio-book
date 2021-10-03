@@ -374,3 +374,6 @@ env FLASK_APP=mio.shell flask cli exe -cls=cli.WorkMan.Daemon.hello
 生产环境的优化，请参阅[优化章节](optimize.md)
 
 快速搭建数据库请参阅[数据库章节](database.md)
+
+助手类函数请参阅[助手类函数章节](function.md)
+

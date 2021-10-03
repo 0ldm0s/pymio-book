@@ -10,5 +10,7 @@
 
 [数据库章节](zh-cn/database.md)
 
+[助手类函数章节](zh-cn/function.md)
+
 ## 英文文档
 
