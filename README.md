@@ -4,7 +4,7 @@
 
 [快速开始](zh-cn/home.md)
 
-[cli章节](zh-cn/cli.md)
+[命令行/CLI章节](zh-cn/cli.md)
 
 [优化章节](zh-cn/optimize.md)
 
