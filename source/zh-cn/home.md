@@ -304,7 +304,6 @@ pip install -r requirements.txt
 ```shell
 # 请自行替换为实际的项目根目录
 cd <项目根目录>
-# 启动模式二选一
 # 默认启动
 python mio/pymio.py
 # 如无异常，应该看到类似的提示文字
@@ -318,7 +317,7 @@ python mio/pymio.py
 
 | 名称       | 备注                                                         |
 | ---------- | ------------------------------------------------------------ |
-| app_config | 高危参数，不推荐调整。可以调整默认的config文件夹的名字。例如 python mio/pymio.py --app_config=config1 |
+| app_config | 高危参数，不推荐使用。用于调整默认的config文件夹的名字。例如 python mio/pymio.py --app_config=config1 |
 | host       | 绑定的ip，默认为127.0.0.1，如果想被外部访问，可设为具体ip或0.0.0.0 例如 python mio/pymio.py --host=0.0.0.0 |
 | port       | 绑定的端口，默认为5000，如需调整，可直接指定。部分系统，非root不允许绑定低于1024的端口号。<br />例如 python mio/pymio.py --port=8000 |
 | config     | 选择对应的环境配置，可选：`development`开发环境（默认）、`testing`测试环境和`production`生产环境 |
