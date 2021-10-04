@@ -1,4 +1,4 @@
-# 关于PyMio
+# 关于PyMIO
 
 一个基于flask的多功能框架，整合tornado、libuv、markdown、babel、celery、redis及mongoengine。
 
@@ -6,7 +6,7 @@
 
 ## 搭建框架
 
-事实上，pymio只是一个轻量化的框架核心，除了部分文件夹命名需要跟随规则外，其他均无特定规则。
+事实上，PyMIO只是一个轻量化的框架核心，除了部分文件夹命名需要跟随规则外，其他均无特定规则。
 
 ### 从模板项目开始
 
