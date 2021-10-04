@@ -1,0 +1,2347 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>助手类方法函数 &mdash; pymio-cookbook 1.5.17 文档</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="optimize.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="database.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> pymio-cookbook
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="home.html">关于PyMIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">命令行/CLI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">助手类方法函数</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">日志类</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">快速模板</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">用于通常函数的模板</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cli">用于cli函数类的快速模板</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">方法类函数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#check-ua">check_ua</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#check-bot">check_bot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#check-ie">check_ie</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#in-dict">in_dict</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id12">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#is-enable">is_enable</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id14">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-real-ip">get_real_ip</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id16">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#check-is-ip">check_is_ip</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id18">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#timestamp2str">timestamp2str</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id20">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#str2timestamp">str2timestamp</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id22">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-bool">get_bool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id24">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-root-path">get_root_path</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id26">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id27">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#file-lock">file_lock</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id28">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id29">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#write-txt-file">write_txt_file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id30">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id31">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#read-txt-file">read_txt_file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id32">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id33">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#write-file">write_file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id34">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id35">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#read-file">read_file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id36">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id37">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#file-unlock">file_unlock</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id38">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id39">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#random-str">random_str</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id40">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id41">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#random-number-str">random_number_str</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id42">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id43">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#random-char">random_char</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id44">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id45">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-file-list">get_file_list</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id46">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id47">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#check-file-in-list">check_file_in_list</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id48">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id49">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#crc-file">crc_file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id50">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id51">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#is-number">is_number</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id52">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id53">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#safe-html-code">safe_html_code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id54">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id55">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ant-path-matcher">ant_path_matcher</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id56">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id57">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#check-email">check_email</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id58">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id59">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-args-from-dict">get_args_from_dict</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id60">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id61">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-variable-from-request">get_variable_from_request</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id62">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id63">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-local-now">get_local_now</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id64">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id65">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-utc-now">get_utc_now</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id66">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id67">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-this-week-range">get_this_week_range</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id68">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id69">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-this-month-range">get_this_month_range</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id70">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id71">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-month-range">get_month_range</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id72">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id73">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-today">get_today</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id74">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id75">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-yesterday">get_yesterday</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id76">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id77">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-this-days-range">get_this_days_range</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id78">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id79">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-now-microtime">get_now_microtime</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id80">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id81">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#microtime">microtime</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id82">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id83">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#md5">md5</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id84">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id85">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#base64-encode">base64_encode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id86">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id87">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#base64-decode">base64_decode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id88">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id89">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#base64-txt-encode">base64_txt_encode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id90">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id91">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#base64-txt-decode">base64_txt_decode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id92">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id93">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rounded">rounded</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id94">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id95">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#easy-encrypted">easy_encrypted</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id96">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id97">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#check-chinese-mobile">check_chinese_mobile</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id98">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id99">返回</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#str2int">str2int</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id100">传入参数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id101">返回</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pymio-cookbook</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>助手类方法函数</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/zh-cn/function.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>助手类方法函数<a class="headerlink" href="#id1" title="永久链接至标题"></a></h1>
+<section id="id2">
+<h2>日志类<a class="headerlink" href="#id2" title="永久链接至标题"></a></h2>
+<section id="id3">
+<h3>快速模板<a class="headerlink" href="#id3" title="永久链接至标题"></a></h3>
+<section id="id4">
+<h4>用于通常函数的模板<a class="headerlink" href="#id4" title="永久链接至标题"></a></h4>
+<p>例如celery或是web的场合，这里以web来举例，这并非完整的代码，仅用于展示代码的写法。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">simplejson</span> <span class="k">as</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">mio.util.Logs</span> <span class="kn">import</span> <span class="n">LogHandler</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">main</span>
+
+
+<span class="k">def</span> <span class="nf">get_logger</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LogHandler</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">LogHandler</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;PyMio&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+
+<span class="nd">@main</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/save_something&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">companies_save</span><span class="p">():</span>
+    <span class="n">logger</span><span class="p">:</span> <span class="n">LogHandler</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">function</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;传入的数据为：</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ApiResponse</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;无效的数据&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_jsonify</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="cli">
+<h4>用于cli函数类的快速模板<a class="headerlink" href="#cli" title="永久链接至标题"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">from</span> <span class="nn">mio.util.Logs</span> <span class="kn">import</span> <span class="n">LogHandler</span>
+
+
+<span class="k">class</span> <span class="nc">Daemon</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__get_logger__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LogHandler</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">LogHandler</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">do_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_logger__</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">function</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;do something&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="id5">
+<h2>方法类函数<a class="headerlink" href="#id5" title="永久链接至标题"></a></h2>
+<section id="check-ua">
+<h3>check_ua<a class="headerlink" href="#check-ua" title="永久链接至标题"></a></h3>
+<p>检查ua字符串中是否包含特定的内容</p>
+<section id="id6">
+<h4>传入参数<a class="headerlink" href="#id6" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>keys</td>
+<td>List[str]</td>
+<td>要检出的字符串列表</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id7">
+<h4>返回<a class="headerlink" href="#id7" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>true表示检出，false表示未检出。</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="check-bot">
+<h3>check_bot<a class="headerlink" href="#check-bot" title="永久链接至标题"></a></h3>
+<p>检查是否是机器人访问</p>
+<section id="id8">
+<h4>传入参数<a class="headerlink" href="#id8" title="永久链接至标题"></a></h4>
+<p>无</p>
+</section>
+<section id="id9">
+<h4>返回<a class="headerlink" href="#id9" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>true表示检出，false表示未检出。</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="check-ie">
+<h3>check_ie<a class="headerlink" href="#check-ie" title="永久链接至标题"></a></h3>
+<p>检查是否为ie浏览器访问</p>
+<section id="id10">
+<h4>传入参数<a class="headerlink" href="#id10" title="永久链接至标题"></a></h4>
+<p>无</p>
+</section>
+<section id="id11">
+<h4>返回<a class="headerlink" href="#id11" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>true表示检出，false表示未检出。</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="in-dict">
+<h3>in_dict<a class="headerlink" href="#in-dict" title="永久链接至标题"></a></h3>
+<p>检测dict内是否包含指定的key</p>
+<section id="id12">
+<h4>传入参数<a class="headerlink" href="#id12" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dic</td>
+<td>dict</td>
+<td>要检出的dict</td>
+</tr>
+<tr>
+<td>key</td>
+<td>str</td>
+<td>指定的key</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id13">
+<h4>返回<a class="headerlink" href="#id13" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>true表示检出，false表示未检出。</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="is-enable">
+<h3>is_enable<a class="headerlink" href="#is-enable" title="永久链接至标题"></a></h3>
+<p>判断是否启用</p>
+<section id="id14">
+<h4>传入参数<a class="headerlink" href="#id14" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dic</td>
+<td>dict</td>
+<td>要检出的dict</td>
+</tr>
+<tr>
+<td>key</td>
+<td>str</td>
+<td>指定的key</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id15">
+<h4>返回<a class="headerlink" href="#id15" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>false表示未启用，true表示启用</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="get-real-ip">
+<h3>get_real_ip<a class="headerlink" href="#get-real-ip" title="永久链接至标题"></a></h3>
+<p>获取真实ip。支持大部分模式（包括cloudflare）</p>
+<section id="id16">
+<h4>传入参数<a class="headerlink" href="#id16" title="永久链接至标题"></a></h4>
+<p>无</p>
+</section>
+<section id="id17">
+<h4>返回<a class="headerlink" href="#id17" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str</td>
+<td>ip地址</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="check-is-ip">
+<h3>check_is_ip<a class="headerlink" href="#check-is-ip" title="永久链接至标题"></a></h3>
+<p>判断传入的字符串是否为ip地址</p>
+<section id="id18">
+<h4>传入参数<a class="headerlink" href="#id18" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ip_addr</td>
+<td>str</td>
+<td>要检测的字符串</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id19">
+<h4>返回<a class="headerlink" href="#id19" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>true表示检出，false表示未检出。</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="timestamp2str">
+<h3>timestamp2str<a class="headerlink" href="#timestamp2str" title="永久链接至标题"></a></h3>
+<p>时间戳转文本。注意：会受到框架默认设置的时区影响。</p>
+<section id="id20">
+<h4>传入参数<a class="headerlink" href="#id20" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>timestamp</td>
+<td>int</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>iso_format</td>
+<td>str</td>
+<td>转出格式，默认为%Y-%m-%d %H:%M:%S</td>
+</tr>
+<tr>
+<td>hours</td>
+<td>int</td>
+<td>时差校准-小时</td>
+</tr>
+<tr>
+<td>minutes</td>
+<td>int</td>
+<td>时差校准-分钟</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id21">
+<h4>返回<a class="headerlink" href="#id21" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Optional[str]</td>
+<td>如果不为正常的时间戳或时差校准异常，则输出None，否则输出日期文本</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="str2timestamp">
+<h3>str2timestamp<a class="headerlink" href="#str2timestamp" title="永久链接至标题"></a></h3>
+<p>文本转时间戳。注意：会受到框架默认设置的时区影响。</p>
+<section id="id22">
+<h4>传入参数<a class="headerlink" href="#id22" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td>str</td>
+<td>文本日期</td>
+</tr>
+<tr>
+<td>iso_format</td>
+<td>str</td>
+<td>日期格式，很重要，如果不匹配，会导致转出失败，默认为%Y-%m-%d %H:%M:%S</td>
+</tr>
+<tr>
+<td>hours</td>
+<td>int</td>
+<td>时差校准-小时</td>
+</tr>
+<tr>
+<td>minutes</td>
+<td>int</td>
+<td>时差校准-分钟</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id23">
+<h4>返回<a class="headerlink" href="#id23" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Optional[int]</td>
+<td>如果不为正常的时间戳或时差校准异常，则输出None，否则输出时间戳</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="get-bool">
+<h3>get_bool<a class="headerlink" href="#get-bool" title="永久链接至标题"></a></h3>
+<p>转换为bool</p>
+<section id="id24">
+<h4>传入参数<a class="headerlink" href="#id24" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id25">
+<h4>返回<a class="headerlink" href="#id25" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="get-root-path">
+<h3>get_root_path<a class="headerlink" href="#get-root-path" title="永久链接至标题"></a></h3>
+<section id="id26">
+<h4>传入参数<a class="headerlink" href="#id26" title="永久链接至标题"></a></h4>
+<p>无</p>
+</section>
+<section id="id27">
+<h4>返回<a class="headerlink" href="#id27" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str</td>
+<td>返回当前项目根目录的绝对路径</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="file-lock">
+<h3>file_lock<a class="headerlink" href="#file-lock" title="永久链接至标题"></a></h3>
+<p>创建锁定文件（逻辑锁）</p>
+<section id="id28">
+<h4>传入参数<a class="headerlink" href="#id28" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filename</td>
+<td>str</td>
+<td>文件路径</td>
+</tr>
+<tr>
+<td>txt</td>
+<td>str</td>
+<td>写入锁定文件的内容，可不传，默认为一个空格</td>
+</tr>
+<tr>
+<td>exp</td>
+<td>int</td>
+<td>过期时间，单位为分钟。因为cron最小值执行周期就是1分钟</td>
+</tr>
+<tr>
+<td>reader</td>
+<td>bool</td>
+<td>是否读取文件内容</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id29">
+<h4>返回<a class="headerlink" href="#id29" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>-1表示写入文件异常/失败，0表示已锁定，1表示写入成功</td>
+</tr>
+<tr>
+<td>str</td>
+<td>返回文本，非读取模式下，如果遇到已锁定的情况，会返回Locked字样，读取模式则返回文件内容</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="write-txt-file">
+<h3>write_txt_file<a class="headerlink" href="#write-txt-file" title="永久链接至标题"></a></h3>
+<p>写入文本文件</p>
+<section id="id30">
+<h4>传入参数<a class="headerlink" href="#id30" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filename</td>
+<td>str</td>
+<td>文件路径</td>
+</tr>
+<tr>
+<td>txt</td>
+<td>str</td>
+<td>要写入的文本内容，默认为一个空格</td>
+</tr>
+<tr>
+<td>encoding</td>
+<td>str</td>
+<td>文件编码，默认为utf-8</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id31">
+<h4>返回<a class="headerlink" href="#id31" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>是否写入成功</td>
+</tr>
+<tr>
+<td>str</td>
+<td>写入失败则输出错误信息</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="read-txt-file">
+<h3>read_txt_file<a class="headerlink" href="#read-txt-file" title="永久链接至标题"></a></h3>
+<p>读取文本文件</p>
+<section id="id32">
+<h4>传入参数<a class="headerlink" href="#id32" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filename</td>
+<td>str</td>
+<td>文件路径</td>
+</tr>
+<tr>
+<td>encoding</td>
+<td>str</td>
+<td>文件编码，默认为utf-8</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id33">
+<h4>返回<a class="headerlink" href="#id33" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="write-file">
+<h3>write_file<a class="headerlink" href="#write-file" title="永久链接至标题"></a></h3>
+<p>写入文件，支持写入二进制文件</p>
+<section id="id34">
+<h4>传入参数<a class="headerlink" href="#id34" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filename</td>
+<td>str</td>
+<td>文件路径</td>
+</tr>
+<tr>
+<td>txt</td>
+<td>Union[str, bytes]</td>
+<td>文本或是二进制</td>
+</tr>
+<tr>
+<td>method</td>
+<td>str</td>
+<td>写入方法，默认为追加 w+</td>
+</tr>
+<tr>
+<td>encoding</td>
+<td>str</td>
+<td>文件编码，默认为utf-8</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id35">
+<h4>返回<a class="headerlink" href="#id35" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>是否成功</td>
+</tr>
+<tr>
+<td>str</td>
+<td>写入失败则输出错误信息</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="read-file">
+<h3>read_file<a class="headerlink" href="#read-file" title="永久链接至标题"></a></h3>
+<p>读取文件</p>
+<section id="id36">
+<h4>传入参数<a class="headerlink" href="#id36" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filename</td>
+<td>str</td>
+<td>文件路径</td>
+</tr>
+<tr>
+<td>method</td>
+<td>str</td>
+<td>读取方法，默认只读 r</td>
+</tr>
+<tr>
+<td>encoding</td>
+<td>str</td>
+<td>文件编码，默认为utf-8</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id37">
+<h4>返回<a class="headerlink" href="#id37" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Optional[Union[str, bytes]]</td>
+<td>如果读取失败或文件不存在，则输出None，如正常读取，根据文件类型不同，输出二进制或字符串</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="file-unlock">
+<h3>file_unlock<a class="headerlink" href="#file-unlock" title="永久链接至标题"></a></h3>
+<p>解锁逻辑锁</p>
+<section id="id38">
+<h4>传入参数<a class="headerlink" href="#id38" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filename</td>
+<td>str</td>
+<td>文件路径</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id39">
+<h4>返回<a class="headerlink" href="#id39" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>-1表示删除文件异常/失败，1表示删除成功</td>
+</tr>
+<tr>
+<td>str</td>
+<td>如果发生异常，则返回错误信息</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="random-str">
+<h3>random_str<a class="headerlink" href="#random-str" title="永久链接至标题"></a></h3>
+<p>生成随机字符串，仅英文字符</p>
+<section id="id40">
+<h4>传入参数<a class="headerlink" href="#id40" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>random_length</td>
+<td>int</td>
+<td>长度，默认8</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id41">
+<h4>返回<a class="headerlink" href="#id41" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str</td>
+<td>输出的字符串</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="random-number-str">
+<h3>random_number_str<a class="headerlink" href="#random-number-str" title="永久链接至标题"></a></h3>
+<p>生成随机数字串</p>
+<section id="id42">
+<h4>传入参数<a class="headerlink" href="#id42" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>random_length</td>
+<td>int</td>
+<td>长度，默认8</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id43">
+<h4>返回<a class="headerlink" href="#id43" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str</td>
+<td>输出的字符串</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="random-char">
+<h3>random_char<a class="headerlink" href="#random-char" title="永久链接至标题"></a></h3>
+<p>生成随机字符串，包括英文字符，数字和特殊字符</p>
+<section id="id44">
+<h4>传入参数<a class="headerlink" href="#id44" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>size</td>
+<td>int</td>
+<td>长度，默认6</td>
+</tr>
+<tr>
+<td>special</td>
+<td>bool</td>
+<td>是否使用特殊字符，默认False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id45">
+<h4>返回<a class="headerlink" href="#id45" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str</td>
+<td>输出的字符串</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="get-file-list">
+<h3>get_file_list<a class="headerlink" href="#get-file-list" title="永久链接至标题"></a></h3>
+<p>获取指定路径下的文件列表</p>
+<section id="id46">
+<h4>传入参数<a class="headerlink" href="#id46" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>root_path</td>
+<td>str</td>
+<td>指定要检索的目录</td>
+</tr>
+<tr>
+<td>files</td>
+<td>Optional[List[str]]</td>
+<td>文件列表，尾递归时使用，默认可不传</td>
+</tr>
+<tr>
+<td>is_sub</td>
+<td>bool</td>
+<td>是否遍历子目录，默认False</td>
+</tr>
+<tr>
+<td>is_full_path</td>
+<td>bool</td>
+<td>是否输出完整路径，默认True</td>
+</tr>
+<tr>
+<td>include_hide_file</td>
+<td>bool</td>
+<td>是否输出隐含文件，默认False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id47">
+<h4>返回<a class="headerlink" href="#id47" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List[str]</td>
+<td>文件列表</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="check-file-in-list">
+<h3>check_file_in_list<a class="headerlink" href="#check-file-in-list" title="永久链接至标题"></a></h3>
+<p>检测文件是否在列表中</p>
+<section id="id48">
+<h4>传入参数<a class="headerlink" href="#id48" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>file</td>
+<td>str</td>
+<td>要检测的文件名</td>
+</tr>
+<tr>
+<td>file_list</td>
+<td>List[str]</td>
+<td>要检测的文件列表</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id49">
+<h4>返回<a class="headerlink" href="#id49" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>如果检出则返回True，否则返回False</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="crc-file">
+<h3>crc_file<a class="headerlink" href="#crc-file" title="永久链接至标题"></a></h3>
+<p>计算文件的crc32值</p>
+<section id="id50">
+<h4>传入参数<a class="headerlink" href="#id50" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filename</td>
+<td>str</td>
+<td>文件路径</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id51">
+<h4>返回<a class="headerlink" href="#id51" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str</td>
+<td>crc32的计算结果</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="is-number">
+<h3>is_number<a class="headerlink" href="#is-number" title="永久链接至标题"></a></h3>
+<p>判断是否为数字</p>
+<section id="id52">
+<h4>传入参数<a class="headerlink" href="#id52" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s</td>
+<td>Any</td>
+<td>任意类型的数据</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id53">
+<h4>返回<a class="headerlink" href="#id53" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>如果是数字，则返回True，否则返回False</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="safe-html-code">
+<h3>safe_html_code<a class="headerlink" href="#safe-html-code" title="永久链接至标题"></a></h3>
+<p>移除文本中的html代码</p>
+<section id="id54">
+<h4>传入参数<a class="headerlink" href="#id54" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string_html</td>
+<td>str</td>
+<td>待处理的字符串</td>
+</tr>
+<tr>
+<td>is_all</td>
+<td>bool</td>
+<td>是否全部过滤，True表示过滤掉所有html，False表示只处理危险html</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id55">
+<h4>返回<a class="headerlink" href="#id55" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str</td>
+<td>处理好的结果</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="ant-path-matcher">
+<h3>ant_path_matcher<a class="headerlink" href="#ant-path-matcher" title="永久链接至标题"></a></h3>
+<p>ant文件路径判断，历史遗留接口，可能会在近期移除</p>
+<section id="id56">
+<h4>传入参数<a class="headerlink" href="#id56" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ant_path</td>
+<td>str</td>
+<td>ant路径</td>
+</tr>
+<tr>
+<td>expected_path</td>
+<td>str</td>
+<td>预期的路径</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id57">
+<h4>返回<a class="headerlink" href="#id57" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>符合则为True，不符合则为False</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="check-email">
+<h3>check_email<a class="headerlink" href="#check-email" title="永久链接至标题"></a></h3>
+<p>判断是否电邮地址，基础版，只是快速判断符合规则与否</p>
+<section id="id58">
+<h4>传入参数<a class="headerlink" href="#id58" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td>str</td>
+<td>待检字符串</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id59">
+<h4>返回<a class="headerlink" href="#id59" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>符合规则为True，否则为False</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="get-args-from-dict">
+<h3>get_args_from_dict<a class="headerlink" href="#get-args-from-dict" title="永久链接至标题"></a></h3>
+<p>从dict中获取指定key的数据</p>
+<section id="id60">
+<h4>传入参数<a class="headerlink" href="#id60" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dt</td>
+<td>Dict</td>
+<td>传入的dict</td>
+</tr>
+<tr>
+<td>ky</td>
+<td>str</td>
+<td>指定的key</td>
+</tr>
+<tr>
+<td>default</td>
+<td>Optional[Any]</td>
+<td>默认值，当未找到指定key时的返回，默认为空字符串</td>
+</tr>
+<tr>
+<td>force_str</td>
+<td>bool</td>
+<td>强制输出为str，默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id61">
+<h4>返回<a class="headerlink" href="#id61" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Optional[Any]</td>
+<td>取出的结果</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="get-variable-from-request">
+<h3>get_variable_from_request<a class="headerlink" href="#get-variable-from-request" title="永久链接至标题"></a></h3>
+<p>从request内读取数据，仅用于web环境</p>
+<section id="id62">
+<h4>传入参数<a class="headerlink" href="#id62" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key_name</td>
+<td>str</td>
+<td>指定的key</td>
+</tr>
+<tr>
+<td>default</td>
+<td>Optional[Any]</td>
+<td>默认值，当未找到指定key时的返回，默认为空字符串</td>
+</tr>
+<tr>
+<td>method</td>
+<td>str</td>
+<td>默认为<code>check</code>，会按着<code>post</code>&gt;<code>get</code>&gt;<code>header</code>的顺序来检查是否有指定的key<br />支持直接指定方法: <code>post</code>仅接受form数据，<code>get</code>仅接受url传参，<code>header</code>仅从header中读取数据</td>
+</tr>
+<tr>
+<td>force_str</td>
+<td>bool</td>
+<td>强制输出为str，默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id63">
+<h4>返回<a class="headerlink" href="#id63" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Optional[Any]</td>
+<td>取出的结果</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="get-local-now">
+<h3>get_local_now<a class="headerlink" href="#get-local-now" title="永久链接至标题"></a></h3>
+<p>获取本地时间戳，默认为0时区，不受系统时区设置影响</p>
+<section id="id64">
+<h4>传入参数<a class="headerlink" href="#id64" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hours</td>
+<td>int</td>
+<td>时差校准-小时</td>
+</tr>
+<tr>
+<td>minutes</td>
+<td>int</td>
+<td>时差校准-分钟</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id65">
+<h4>返回<a class="headerlink" href="#id65" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="get-utc-now">
+<h3>get_utc_now<a class="headerlink" href="#get-utc-now" title="永久链接至标题"></a></h3>
+<section id="id66">
+<h4>传入参数<a class="headerlink" href="#id66" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id67">
+<h4>返回<a class="headerlink" href="#id67" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="get-this-week-range">
+<h3>get_this_week_range<a class="headerlink" href="#get-this-week-range" title="永久链接至标题"></a></h3>
+<section id="id68">
+<h4>传入参数<a class="headerlink" href="#id68" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id69">
+<h4>返回<a class="headerlink" href="#id69" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="get-this-month-range">
+<h3>get_this_month_range<a class="headerlink" href="#get-this-month-range" title="永久链接至标题"></a></h3>
+<section id="id70">
+<h4>传入参数<a class="headerlink" href="#id70" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id71">
+<h4>返回<a class="headerlink" href="#id71" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="get-month-range">
+<h3>get_month_range<a class="headerlink" href="#get-month-range" title="永久链接至标题"></a></h3>
+<section id="id72">
+<h4>传入参数<a class="headerlink" href="#id72" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id73">
+<h4>返回<a class="headerlink" href="#id73" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="get-today">
+<h3>get_today<a class="headerlink" href="#get-today" title="永久链接至标题"></a></h3>
+<section id="id74">
+<h4>传入参数<a class="headerlink" href="#id74" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id75">
+<h4>返回<a class="headerlink" href="#id75" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="get-yesterday">
+<h3>get_yesterday<a class="headerlink" href="#get-yesterday" title="永久链接至标题"></a></h3>
+<section id="id76">
+<h4>传入参数<a class="headerlink" href="#id76" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id77">
+<h4>返回<a class="headerlink" href="#id77" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="get-this-days-range">
+<h3>get_this_days_range<a class="headerlink" href="#get-this-days-range" title="永久链接至标题"></a></h3>
+<section id="id78">
+<h4>传入参数<a class="headerlink" href="#id78" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id79">
+<h4>返回<a class="headerlink" href="#id79" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="get-now-microtime">
+<h3>get_now_microtime<a class="headerlink" href="#get-now-microtime" title="永久链接至标题"></a></h3>
+<section id="id80">
+<h4>传入参数<a class="headerlink" href="#id80" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id81">
+<h4>返回<a class="headerlink" href="#id81" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="microtime">
+<h3>microtime<a class="headerlink" href="#microtime" title="永久链接至标题"></a></h3>
+<section id="id82">
+<h4>传入参数<a class="headerlink" href="#id82" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id83">
+<h4>返回<a class="headerlink" href="#id83" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="md5">
+<h3>md5<a class="headerlink" href="#md5" title="永久链接至标题"></a></h3>
+<section id="id84">
+<h4>传入参数<a class="headerlink" href="#id84" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id85">
+<h4>返回<a class="headerlink" href="#id85" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="base64-encode">
+<h3>base64_encode<a class="headerlink" href="#base64-encode" title="永久链接至标题"></a></h3>
+<section id="id86">
+<h4>传入参数<a class="headerlink" href="#id86" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id87">
+<h4>返回<a class="headerlink" href="#id87" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="base64-decode">
+<h3>base64_decode<a class="headerlink" href="#base64-decode" title="永久链接至标题"></a></h3>
+<section id="id88">
+<h4>传入参数<a class="headerlink" href="#id88" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id89">
+<h4>返回<a class="headerlink" href="#id89" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="base64-txt-encode">
+<h3>base64_txt_encode<a class="headerlink" href="#base64-txt-encode" title="永久链接至标题"></a></h3>
+<section id="id90">
+<h4>传入参数<a class="headerlink" href="#id90" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id91">
+<h4>返回<a class="headerlink" href="#id91" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="base64-txt-decode">
+<h3>base64_txt_decode<a class="headerlink" href="#base64-txt-decode" title="永久链接至标题"></a></h3>
+<section id="id92">
+<h4>传入参数<a class="headerlink" href="#id92" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id93">
+<h4>返回<a class="headerlink" href="#id93" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="rounded">
+<h3>rounded<a class="headerlink" href="#rounded" title="永久链接至标题"></a></h3>
+<section id="id94">
+<h4>传入参数<a class="headerlink" href="#id94" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id95">
+<h4>返回<a class="headerlink" href="#id95" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="easy-encrypted">
+<h3>easy_encrypted<a class="headerlink" href="#easy-encrypted" title="永久链接至标题"></a></h3>
+<section id="id96">
+<h4>传入参数<a class="headerlink" href="#id96" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id97">
+<h4>返回<a class="headerlink" href="#id97" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="check-chinese-mobile">
+<h3>check_chinese_mobile<a class="headerlink" href="#check-chinese-mobile" title="永久链接至标题"></a></h3>
+<section id="id98">
+<h4>传入参数<a class="headerlink" href="#id98" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id99">
+<h4>返回<a class="headerlink" href="#id99" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="str2int">
+<h3>str2int<a class="headerlink" href="#str2int" title="永久链接至标题"></a></h3>
+<section id="id100">
+<h4>传入参数<a class="headerlink" href="#id100" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>obj</td>
+<td>Any</td>
+<td>任意类型数据。支持y,t,1,yes,true文本转换为True，其他默认为False</td>
+</tr>
+</tbody>
+</table></section>
+<section id="id101">
+<h4>返回<a class="headerlink" href="#id101" title="永久链接至标题"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>转换之后的结果值</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="database.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="optimize.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2021, 0ldm0s.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

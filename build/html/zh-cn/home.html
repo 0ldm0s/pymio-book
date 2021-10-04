@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>关于PyMIO &mdash; pymio-cookbook 1.5.17 文档</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="命令行/CLI" href="cli.html" />
+    <link rel="prev" title="Welcome to pymio-cookbook’s documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> pymio-cookbook
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">关于PyMIO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">搭建框架</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">从模板项目开始</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">从核心开始搭建</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">建立项目</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">建立项目结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">建立配置文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">建立默认蓝本</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">建立默认网页</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">核心依赖版本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">依赖安装</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nix">*nix系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows系统</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">快速启动</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#web">启动Web服务器</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id12">启动参数</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">启动命令行</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id14">*nix下启动</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">命令行/CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function.html">助手类方法函数</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pymio-cookbook</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>关于PyMIO</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/zh-cn/home.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pymio">
+<h1>关于PyMIO<a class="headerlink" href="#pymio" title="永久链接至标题"></a></h1>
+<p>一个基于flask的多功能框架，整合tornado、libuv、markdown、babel、celery、redis及mongoengine。</p>
+<p>可能是目前最好的flask框架，快速、轻量、像我的光头一样易于打理。</p>
+<section id="id1">
+<h2>搭建框架<a class="headerlink" href="#id1" title="永久链接至标题"></a></h2>
+<p>事实上，PyMIO只是一个轻量化的框架核心，除了部分文件夹命名需要跟随规则外，其他均无特定规则。</p>
+<section id="id2">
+<h3>从模板项目开始<a class="headerlink" href="#id2" title="永久链接至标题"></a></h3>
+<p>推荐初学者从这个模式开始，这个模式整合了大量常用的配置和文件，可以做到开箱即用。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 请自行替换&lt;新项目名称&gt;为实际的内容</span>
+git clone https://github.com/0ldm0s/base_mio.git &lt;新项目名称&gt;
+<span class="c1"># 建议移除旧的记录</span>
+<span class="nb">cd</span> &lt;新项目名称&gt;
+rm -Rf .git
+<span class="c1"># 跳至安装依赖安装步骤</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>从核心开始搭建<a class="headerlink" href="#id3" title="永久链接至标题"></a></h3>
+<p>初学者并不推荐这个模式，但可以作为理解整个项目结构的一个方法。范例所使用的操作系统为 Ubunutu 20.04，不考虑实际的权限控制之类的优化措施，仅只展示如何搭建一个框架。</p>
+<p><strong>备注：接下来采用的是正统的git子模组的方式进行，这并非唯一的方案。亦可采用直接下载核心后构建文件夹结构的方式来实现。</strong></p>
+<p>接下来的范例，将以传统<code class="docutils literal notranslate"><span class="pre">helloworld</span></code>来进行。在具体的实践中，请替换为实际的项目名称。</p>
+<section id="id4">
+<h4>建立项目<a class="headerlink" href="#id4" title="永久链接至标题"></a></h4>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir helloworld
+<span class="nb">cd</span> helloworld
+git init
+git submodule add https://github.com/0ldm0s/pymio.git mio
+<span class="nb">cd</span> mio
+<span class="c1"># 安装依赖</span>
+apt-get install build-essential zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev xz-utils libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev sqlite3 libpcre3 libpcre3-dev libssl-dev uuid-dev libtbb-dev libuv1-dev
+<span class="c1"># 参阅依赖安装步骤完成依赖安装</span>
+<span class="c1"># 完成依赖安装后，返回项目根目录</span>
+<span class="nb">cd</span> ..
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h4>建立项目结构<a class="headerlink" href="#id5" title="永久链接至标题"></a></h4>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir config
+mkdir web
+mkdir -p web/main
+mkdir -p web/static
+mkdir -p web/template
+touch config/__init__.py
+touch config/config.yaml
+touch web/main/__init__.py
+touch web/main/views.py
+touch web/template/index.html
+<span class="c1"># 为了防止提交git时空文件夹被排除，建立一个空的隐藏文件</span>
+touch web/static/.nomedia
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h4>建立配置文件<a class="headerlink" href="#id6" title="永久链接至标题"></a></h4>
+<section id="config-config-yaml">
+<h5>config/config.yaml<a class="headerlink" href="#config-config-yaml" title="永久链接至标题"></a></h5>
+<p>这是一个标准的yaml文件，里面主要定义了蓝本和一些站点安全的配置。</p>
+<p><strong>备注：虽然cli不需要配置蓝本，但是websocket需要</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">blueprint</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">main</span><span class="p">:</span>
+      <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">web.main</span>
+<span class="nt">config</span><span class="p">:</span>
+  <span class="nt">login_manager</span><span class="p">:</span>
+    <span class="nt">enable</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">session_protection</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">strong</span>
+    <span class="nt">login_view</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">main.login</span>
+  <span class="nt">csrf</span><span class="p">:</span>
+    <span class="nt">enable</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+<p>这里定义了一个基础的蓝本<code class="docutils literal notranslate"><span class="pre">main</span></code>，并且class的路径为<code class="docutils literal notranslate"><span class="pre">web.main</span></code>。login_manager仅作为历史遗留设置存在，前后端完全分离时，login_manager应显示的禁用以提升性能，csrf亦是如此。</p>
+</section>
+<section id="config-init-py">
+<h5>config/<strong>init</strong>.py<a class="headerlink" href="#config-init-py" title="永久链接至标题"></a></h5>
+<p>系统的主要配置在这个文件中配置。此文件仅作为基础，您可以自由的调整或添加新的配置参数。3套配置分别对应：<code class="docutils literal notranslate"><span class="pre">development</span></code>开发环境（默认）、<code class="docutils literal notranslate"><span class="pre">testing</span></code>测试环境和<code class="docutils literal notranslate"><span class="pre">production</span></code>生产环境。可以通过系统变量或启动参数调整为不同的环境。</p>
+<p><strong>注意：由于考虑到性能和安全性问题，PyMio不再内置sqlalchemy支持，建议使用者迁移至MongoDB或MongoDB群集。但如需要使用sqlalchemy，可自行安装和配置。</strong></p>
+<p><strong>小提示：或许您已经注意到了，大部分的配置信息都可以通过系统环境变量传入</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">basedir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="n">MIO_HOST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MIO_HOST&#39;</span><span class="p">,</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">)</span>
+<span class="n">MIO_PORT</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MIO_PORT&#39;</span><span class="p">,</span> <span class="mi">5000</span><span class="p">))</span>
+<span class="n">MIO_SITE_HOST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MIO_SITE_HOST&#39;</span><span class="p">,</span> <span class="n">MIO_HOST</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+    <span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SECRET_KEY&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;PYMIO_SECRET_KEY&#39;</span>  <span class="c1"># 默认秘钥</span>
+    <span class="n">SESSION_TYPE</span> <span class="o">=</span> <span class="s1">&#39;filesystem&#39;</span>
+    <span class="c1"># 邮件系统设置相关</span>
+    <span class="n">MIO_MAIL</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">MIO_SEND_MAIL</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">MAIL_SUBJECT_PREFIX</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MIO_MAIL_SUBJECT_PREFIX&#39;</span><span class="p">,</span> <span class="s1">&#39;[Mio System]&#39;</span><span class="p">)</span>  <span class="c1"># 默认邮件标题前缀</span>
+    <span class="n">MAIL_SENDER</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MIO_MAIL_DEFAULT_SENDER&#39;</span><span class="p">,</span> <span class="s1">&#39;Mio System Administrator &lt;admin@example.com&gt;&#39;</span><span class="p">)</span>  <span class="c1"># 默认发件人</span>
+    <span class="n">MAIL_SERVER</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MIO_MAIL_SERVER&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span><span class="p">)</span>
+    <span class="n">MAIL_PORT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MIO_MAIL_PORT&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+    <span class="n">MAIL_USE_TLS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MIO_MAIL_USE_TLS&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">MAIL_USERNAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MIO_MAIL_USERNAME&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">MAIL_PASSWORD</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MIO_MAIL_PASSWORD&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="c1"># 是否使用MONGODB</span>
+    <span class="n">MONGODB_ENABLE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MIO_MONGODB_ENABLE&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># 是否使用CELERY</span>
+    <span class="n">CELERY_ENABLE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MIO_CELERY_ENABLE&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># 是否使用Redis</span>
+    <span class="n">REDIS_ENABLE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MIO_REDIS_ENABLE&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># Redis前导</span>
+    <span class="n">REDIS_KEY_PREFIX</span> <span class="o">=</span> <span class="s1">&#39;PYMIO&#39;</span>
+    <span class="c1"># 是否使用CACHE</span>
+    <span class="n">CACHED_ENABLE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MIO_CACHED_ENABLE&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># 是否使用CORS</span>
+    <span class="n">CORS_ENABLE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MIO_CORS_ENABLE&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">CORS_URI</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MIO_CORS_URI&#39;</span><span class="p">,</span> <span class="p">{</span><span class="sa">r</span><span class="s2">&quot;/*&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;origins&quot;</span><span class="p">:</span> <span class="s2">&quot;*&quot;</span><span class="p">}})</span>
+    <span class="c1"># 支持的语言</span>
+    <span class="n">LANGUAGES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;zh-CN&#39;</span><span class="p">]</span>
+    <span class="c1"># 默认语言</span>
+    <span class="n">DEFAULT_LANGUAGE</span> <span class="o">=</span> <span class="s1">&#39;zh-CN&#39;</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">jinja_env</span><span class="o">.</span><span class="n">trim_blocks</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">jinja_env</span><span class="o">.</span><span class="n">lstrip_blocks</span> <span class="o">=</span> <span class="kc">True</span>
+
+
+<span class="k">class</span> <span class="nc">DevelopmentConfig</span><span class="p">(</span><span class="n">Config</span><span class="p">):</span>
+    <span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">MONGODB_SETTINGS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;db&#39;</span><span class="p">:</span> <span class="s1">&#39;db_name&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;connect&#39;</span><span class="p">:</span> <span class="kc">False</span>
+    <span class="p">}</span>
+    <span class="n">REDIS_URL</span> <span class="o">=</span> <span class="s1">&#39;redis://localhost:6379/0&#39;</span>
+    <span class="n">CACHE_TYPE</span> <span class="o">=</span> <span class="s1">&#39;simple&#39;</span>
+    <span class="n">CACHE_REDIS_URL</span> <span class="o">=</span> <span class="n">REDIS_URL</span>
+    <span class="n">CELERY_BROKER_URL</span> <span class="o">=</span> <span class="n">REDIS_URL</span>
+    <span class="n">CELERY_BACKEND_URL</span> <span class="o">=</span> <span class="n">REDIS_URL</span>
+
+
+<span class="k">class</span> <span class="nc">TestingConfig</span><span class="p">(</span><span class="n">Config</span><span class="p">):</span>
+    <span class="n">TESTING</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">MONGODB_SETTINGS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;db&#39;</span><span class="p">:</span> <span class="s1">&#39;db_name&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;connect&#39;</span><span class="p">:</span> <span class="kc">False</span>
+    <span class="p">}</span>
+    <span class="n">REDIS_URL</span> <span class="o">=</span> <span class="s1">&#39;redis://localhost:6379/0&#39;</span>
+    <span class="n">CACHE_TYPE</span> <span class="o">=</span> <span class="s1">&#39;simple&#39;</span>
+    <span class="n">CACHE_REDIS_URL</span> <span class="o">=</span> <span class="n">REDIS_URL</span>
+    <span class="n">CELERY_BROKER_URL</span> <span class="o">=</span> <span class="n">REDIS_URL</span>
+    <span class="n">CELERY_BACKEND_URL</span> <span class="o">=</span> <span class="n">REDIS_URL</span>
+
+
+<span class="k">class</span> <span class="nc">ProductionConfig</span><span class="p">(</span><span class="n">Config</span><span class="p">):</span>
+    <span class="n">MONGODB_SETTINGS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;db&#39;</span><span class="p">:</span> <span class="s1">&#39;db_name&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;connect&#39;</span><span class="p">:</span> <span class="kc">False</span>
+    <span class="p">}</span>
+    <span class="n">REDIS_URL</span> <span class="o">=</span> <span class="s1">&#39;redis://localhost:6379/0&#39;</span>
+    <span class="n">CACHE_TYPE</span> <span class="o">=</span> <span class="s1">&#39;simple&#39;</span>
+    <span class="n">CACHE_REDIS_URL</span> <span class="o">=</span> <span class="n">REDIS_URL</span>
+    <span class="n">CELERY_BROKER_URL</span> <span class="o">=</span> <span class="n">REDIS_URL</span>
+    <span class="n">CELERY_BACKEND_URL</span> <span class="o">=</span> <span class="n">REDIS_URL</span>
+
+
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;development&#39;</span><span class="p">:</span> <span class="n">DevelopmentConfig</span><span class="p">,</span>
+    <span class="s1">&#39;testing&#39;</span><span class="p">:</span> <span class="n">TestingConfig</span><span class="p">,</span>
+    <span class="s1">&#39;production&#39;</span><span class="p">:</span> <span class="n">ProductionConfig</span><span class="p">,</span>
+
+    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="n">DevelopmentConfig</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id7">
+<h4>建立默认蓝本<a class="headerlink" href="#id7" title="永久链接至标题"></a></h4>
+<section id="web-main-init-py">
+<h5>web/main/<strong>init</strong>.py<a class="headerlink" href="#web-main-init-py" title="永久链接至标题"></a></h5>
+<p><strong>小提示：因为flask本身奇怪的限制问题，不得不建立一个web文件夹，因此如果仅需要使用cli的情况下，只要到这一步建立完，就可以开始编写cli命令行了</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span>
+
+<span class="n">main</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id8">
+<h4>建立默认网页<a class="headerlink" href="#id8" title="永久链接至标题"></a></h4>
+<p>到这一步，就是标准的flask+jinja2的操作了，就不再赘述了。具体请参阅flask与jinjia2。</p>
+<section id="web-main-views-py">
+<h5>web/main/views.py<a class="headerlink" href="#web-main-views-py" title="永久链接至标题"></a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">main</span>
+
+
+<span class="nd">@main</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+    <span class="n">sys_ver</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span> <span class="n">sys_ver</span><span class="o">=</span><span class="n">sys_ver</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="web-template-index-html">
+<h5>web/template/index.html<a class="headerlink" href="#web-template-index-html" title="永久链接至标题"></a></h5>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>Powered by PyMio <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+Python {{ sys_ver }}
+</pre></div>
+</div>
+<p>到这里，一个标准的pymio项目就搭建完成。您可以执行以下命令来看效果</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python mio/pymio.py
+</pre></div>
+</div>
+<p>如无异常，则会提示当前绑定的ip和端口号，只要在浏览器中打开该地址即可看到类似这样的文字。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Powered</span> <span class="n">by</span> <span class="n">PyMio</span>
+<span class="n">Python</span> <span class="mf">3.9.5</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">May</span> <span class="mi">18</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">22</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mi">08</span><span class="p">)</span> <span class="p">[</span><span class="n">Clang</span> <span class="mf">13.0.0</span> <span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+<section id="id9">
+<h2>核心依赖版本<a class="headerlink" href="#id9" title="永久链接至标题"></a></h2>
+<p><strong>如已有现存的环境，请确保核心依赖的版本正确</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">~=</span> <span class="mf">3.7</span>
+<span class="n">flask</span> <span class="o">~=</span> <span class="mf">2.0.1</span>
+<span class="n">tornado</span> <span class="o">~=</span> <span class="mf">6.1</span>
+<span class="n">mongoengine</span> <span class="o">~=</span> <span class="mf">0.23.1</span>
+<span class="n">zstandard</span> <span class="o">~=</span> <span class="mf">0.15.2</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h2>依赖安装<a class="headerlink" href="#id10" title="永久链接至标题"></a></h2>
+<section id="nix">
+<h3>*nix系统<a class="headerlink" href="#nix" title="永久链接至标题"></a></h3>
+<p><strong>注意：生产环境需要安装libuv和uvloop以提高整体性能</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 安装基础依赖</span>
+pip install -r requirements.first.txt
+<span class="c1"># 安装依赖</span>
+pip install -r requirements.txt
+<span class="c1"># 如需使用circus，则安装</span>
+pip install -r requirements.circus.txt
+<span class="c1"># 生产环境手动安装uvloop</span>
+pip install uvloop
+</pre></div>
+</div>
+<p><strong>备注：FreeBSD系统的安装略微不同</strong></p>
+</section>
+<section id="windows">
+<h3>Windows系统<a class="headerlink" href="#windows" title="永久链接至标题"></a></h3>
+<p>如非开发环境，建议使用3.9.x获取更好的性能，调试则建议使用3.7.x配合Pycharm。</p>
+<p>如条件允许，则应使用wsl或hyper-v，不推荐直接运行于windows环境。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 安装基础依赖</span>
+pip install -r requirements.first.txt
+<span class="c1"># 安装依赖</span>
+pip install -r requirements.txt
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id11">
+<h2>快速启动<a class="headerlink" href="#id11" title="永久链接至标题"></a></h2>
+<section id="web">
+<h3>启动Web服务器<a class="headerlink" href="#web" title="永久链接至标题"></a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 请自行替换为实际的项目根目录</span>
+<span class="nb">cd</span> &lt;项目根目录&gt;
+<span class="c1"># 启动模式二选一</span>
+<span class="c1"># 默认启动</span>
+python mio/pymio.py
+<span class="c1"># 如无异常，应该看到类似的提示文字</span>
+<span class="m">2021</span>-10-04 <span class="m">06</span>:39:30,804 <span class="o">[</span>PID <span class="m">78559</span><span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> PyMio -&gt; Initializing the system......profile: default
+<span class="m">2021</span>-10-04 <span class="m">06</span>:39:30,807 <span class="o">[</span>PID <span class="m">78559</span><span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> PyMio -&gt; WebServer listen <span class="k">in</span> http://127.0.0.1:5000
+</pre></div>
+</div>
+<section id="id12">
+<h4>启动参数<a class="headerlink" href="#id12" title="永久链接至标题"></a></h4>
+<p>除了ds和host为互斥外，其他参数均可同时传入。</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>app_config</td>
+<td>高危参数，不推荐调整。可以调整默认的config文件夹的名字。例如 python mio/pymio.py --app_config=config1</td>
+</tr>
+<tr>
+<td>host</td>
+<td>绑定的ip，默认为127.0.0.1，如果想被外部访问，可设为具体ip或0.0.0.0 例如 python mio/pymio.py --host=0.0.0.0</td>
+</tr>
+<tr>
+<td>port</td>
+<td>绑定的端口，默认为5000，如需调整，可直接指定。部分系统，非root不允许绑定低于1024的端口号。<br />例如 python mio/pymio.py --port=8000</td>
+</tr>
+<tr>
+<td>config</td>
+<td>选择对应的环境配置，可选：<code>development</code>开发环境（默认）、<code>testing</code>测试环境和<code>production</code>生产环境</td>
+</tr>
+<tr>
+<td>pid</td>
+<td>指定pid文件的路径。如不使用可不传。</td>
+</tr>
+<tr>
+<td>ds</td>
+<td>指定unix socket文件路径，仅推荐用于FreeBSD系统。启用该模式会直接禁用host模式，请慎用。</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="id13">
+<h3>启动命令行<a class="headerlink" href="#id13" title="永久链接至标题"></a></h3>
+<p>虽然并无限制命令行的类名（即文件夹路径），但基于方便阅读的考虑，建议统一放置于cli目录下。</p>
+<p><strong>注意：flask 2.0的启动逻辑同1.x不同，考虑到性能，因此不再兼容旧版flask 1.x。</strong></p>
+<p>假定未建立cli目录（模板项目已自带，可跳过这个步骤）</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 请自行替换为实际的项目根目录</span>
+<span class="nb">cd</span> &lt;项目根目录&gt;
+mkdir cli
+touch cli/__init__.py
+touch cli/WorkMan.py
+</pre></div>
+</div>
+<p>编辑<code class="docutils literal notranslate"><span class="pre">cli/WorkMan.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+
+<span class="k">class</span> <span class="nc">Daemon</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">sys_ver</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Powered by PyMio.</span><span class="se">\n</span><span class="s2">Python: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys_ver</span><span class="p">))</span>
+</pre></div>
+</div>
+<section id="id14">
+<h4>*nix下启动<a class="headerlink" href="#id14" title="永久链接至标题"></a></h4>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 请自行替换为实际的项目根目录</span>
+<span class="nb">cd</span> &lt;项目根目录&gt;
+env <span class="nv">FLASK_APP</span><span class="o">=</span>mio.shell flask cli exe -cls<span class="o">=</span>cli.WorkMan.Daemon.hello
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">env</span></code>指令设置了一个临时的环境变量<code class="docutils literal notranslate"><span class="pre">FLASK_APP</span></code>来启动flask</p>
+<p><code class="docutils literal notranslate"><span class="pre">cli</span> <span class="pre">exe</span></code>表示启动pymio框架的cli模式</p>
+<p><code class="docutils literal notranslate"><span class="pre">-cls</span></code>则指定的了要启动的函数</p>
+<p><code class="docutils literal notranslate"><span class="pre">cli.WorkMan.Daemon.hello</span></code>中<code class="docutils literal notranslate"><span class="pre">cli</span></code>表示包名，<code class="docutils literal notranslate"><span class="pre">WorkMan</span></code>是py文件的文件名，<code class="docutils literal notranslate"><span class="pre">Daemon</span></code>则为要调用的类的类名，最后<code class="docutils literal notranslate"><span class="pre">hello</span></code>为类里面的函数名。</p>
+<p>更多细节请阅读<a class="reference internal" href="cli.html"><span class="doc">cli章节</span></a></p>
+<p>生产环境的优化，请参阅<a class="reference internal" href="optimize.html"><span class="doc">优化章节</span></a></p>
+<p>快速搭建数据库请参阅<a class="reference internal" href="database.html"><span class="doc">数据库章节</span></a></p>
+<p>助手类函数请参阅<a class="reference internal" href="function.html"><span class="doc">助手类函数章节</span></a></p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to pymio-cookbook’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="cli.html" class="btn btn-neutral float-right" title="命令行/CLI" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2021, 0ldm0s.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
