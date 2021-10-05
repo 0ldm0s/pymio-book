@@ -57,3 +57,92 @@ env FLASK_APP=mio.shell flask cli exe -cls=cli.WorkMan.Daemon.hello -arg="key1=h
 
 ## Celery
 
+celery可以用来作为后端的worker支撑，同时也可以用来实现定时计划。需要注意的是，worker模式和心跳模式是分开的，虽然可以同时启动，但启动参数需要各自单独指定。
+
+不要忘记一点，celery的worker进程数是和cpu核心数是一致的。例如有1个核心，就只会启动1个worker进程，2个核心则启动2个，如此类推。一个worker同时只能执行一个工作，在这个工作未结束之前，不会出处理后续的事务。当然，也可以同时部署多个worker来进行横向扩展。
+
+### Code Time
+
+为了文件夹看起来规整，推荐放在cli文件夹下。例如`cli.celery`。
+
+假定我已经建立了一个文件`Worker.py`在`cli.celery`文件夹中。
+
+#### 定义任务函数和定时任务
+
+```python
+# -*- coding: utf-8 -*-
+import inspect
+from celery.schedules import crontab
+from mio.sys import celery_app
+from mio.util.Logs import LogHandler
+from model.DiscountCodeObj import DiscountCodeObj
+
+# 这里定义了一个每天0点0分执行的定时任务，时区为Asia/Shanghai
+celery_app.conf.update(
+    timezone='Asia/Shanghai',
+    enable_utc=True,
+    beat_schedule={
+        'do_someting': {
+            'task': 'cli.celery.Worker.do_someting',
+            'schedule': crontab(minute=0, hour=0),
+            'args': ()
+        },
+    }
+)
+
+def get_logger(name='logger') -> LogHandler:
+    logger = LogHandler(f'cli.celery.{name}')
+    return logger
+
+
+@celery_app.task
+def do_someting():
+    console_log: LogHandler = get_logger(inspect.stack()[0].function)
+    console_log.info('起来干活了')
+
+# 这里定义了一个被外部调用的worker函数
+# 这里只能传入str类型的变量，不限制变量个数，也可以设置默认值，当然也可以不传入任何变量
+@celery_app.task
+def iam_worker(txt: str):
+    console_log: LogHandler = get_logger(inspect.stack()[0].function)
+    console_log.info(f'收到了任务，参数为 {txt}')
+```
+
+#### 从web调用worker
+
+这是比较常见的一种情况，例如批量生成、导入导出等场景，均推荐这种方式来进行。避免数据量过大导致脚本超时等问题。
+
+这只是代码片段，具体请根据实际情况来处理
+
+```python
+from cli.celery.Worker import iam_worker
+
+
+@api_admin.route('/do/someting')
+def do_someting():
+    iam_worker.delay('我是参数')
+    return 'OK'
+```
+
+更多细节，请参阅celery的官方文档。
+
+### 启动celery
+
+#### 只启动worker的场合
+
+`-A` 表示要启动的celery_app类的位置，这里就直接用范例的位置。
+
+`-w` 表示附加参数，具体可以参阅celery的官方文档
+
+```shell
+env FLASK_APP=mio.shell flask celery run -A cli.celery.Worker.celery_app -w "loglevel=info E"
+```
+
+#### 附带定时器的场合
+
+定时器不能单独启动，只能随worker进程启动。
+
+```shell
+env FLASK_APP=mio.shell flask celery run -A cli.celery.Worker.celery_app -w "loglevel=info B E"
+```
+
