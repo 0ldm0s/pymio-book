@@ -47,6 +47,12 @@ print(kwargs)
 env FLASK_APP=mio.shell flask cli exe -cls=cli.WorkMan.Daemon.hello -arg="key1=hello||key2=world"
 ```
 
+如果需要指定pid文件路径，可以使用`-pid`参数来指定。例如
+
+```shell
+env FLASK_APP=mio.shell flask cli exe -cls=cli.WorkMan.Daemon.hello -arg="key1=hello||key2=world" -pid=cli.pid
+```
+
 正常执行的话，应该会看到类似的内容
 
 ```shell
@@ -124,7 +130,7 @@ def do_someting():
     return 'OK'
 ```
 
-更多细节，请参阅celery的官方文档。
+更多细节，请参阅[celery的官方文档](https://docs.celeryproject.org/en/stable/userguide/daemonizing.html)。
 
 ### 启动celery
 
@@ -132,7 +138,7 @@ def do_someting():
 
 `-A` 表示要启动的celery_app类的位置，这里就直接用范例的位置。
 
-`-w` 表示附加参数，具体可以参阅celery的官方文档
+`-w` 表示附加参数，具体可以[参阅celery的官方文档](https://docs.celeryproject.org/en/stable/userguide/daemonizing.html)
 
 ```shell
 env FLASK_APP=mio.shell flask celery run -A cli.celery.Worker.celery_app -w "loglevel=info E"
@@ -144,5 +150,11 @@ env FLASK_APP=mio.shell flask celery run -A cli.celery.Worker.celery_app -w "log
 
 ```shell
 env FLASK_APP=mio.shell flask celery run -A cli.celery.Worker.celery_app -w "loglevel=info B E"
+```
+
+如果需要指定pid文件
+
+```shell
+env FLASK_APP=mio.shell flask celery run -A cli.celery.Worker.celery_app -w "loglevel=info pidfile=celery.pid B E"
 ```
 

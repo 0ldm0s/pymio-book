@@ -30,7 +30,7 @@ copyright = '2021, 0ldm0s'
 author = '0ldm0s'
 
 # The full version, including alpha/beta/rc tags
-release = '1.5.17'
+release = '1.5.18'
 
 
 # -- General configuration ---------------------------------------------------
