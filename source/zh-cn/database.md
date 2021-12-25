@@ -169,10 +169,12 @@ class Feedback(Document):
 
 只展示几个基础函数，具体细节自行处理。因为都很简单，就不再进行细节说明。具体请参阅MongoEngine文档。
 
+需要注意的是，请不要直接len查询结果的长度，而应该使用`count()`，否则会造成性能的大幅度降低（特别是在读取大量数据的时候）。
+
 ```python
 import inspect
 from bson import ObjectId
-from mongoengine.queryset import Q
+from mongoengine.queryset import Q, QuerySet
 from flask_mongoengine.pagination import Pagination
 from typing import Optional, Union, List, Tuple, Dict, Any
 from mio.util.Logs import LogHandler
@@ -186,15 +188,18 @@ class UserObj(object):
 
     def get_list(self, page: int, limit: int, keyword: Optional[str] = None) -> Tuple[int, List[User]]:
         logger = self.__get_logger__(inspect.stack()[0].function)
+        total: int = 0
         try:
             query = Q(is_del=False)
             if keyword is not None:
                 query = query & Q(nickname__icontains=keyword)
-            pagination = Pagination(User.objects.filter(query).order_by('-id'), page, limit)
+            items: QuerySet = User.objects.filter(query).order_by('-id')
+            total = items.count()
+            pagination = Pagination(items, page, limit)
             return pagination.total, pagination.items
         except Exception as e:
             logger.error(e)
-            return 0, []
+            return total, []
         
     def get_one_by_id(self, oid: Union[str, ObjectId]):
         logger = self.__get_logger__(inspect.stack()[0].function)
