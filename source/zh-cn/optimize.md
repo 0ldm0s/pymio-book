@@ -2,11 +2,13 @@
 
 ## Linux下的优化
 
-### systemd + circus + lighttpd
+### systemd + circus + lighttpd + sock
 
 >   注意：circus并不推荐在FreeBSD环境下使用，可能会发生circus的假死问题。因此不推荐直接使用。
 
 lighttpd用于处理所有的静态文件，而动态的部分通过转发模组转发至pymio处理（小贴士：lighttpd亦可作为负载均衡使用）。从而实现静态文件和动态内容的物理性隔离。此笔记仅适配单机运行，如需要负载均衡，可在此配置的基础上进行调整。
+
+**警告：这个优化配置不适用于docker！！！在docker下反而性能非常低下！！！**
 
 #### 配置文件
 
