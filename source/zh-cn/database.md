@@ -6,16 +6,36 @@
 
 ### 启用压缩传输
 
-主要使用的是zstd，需要先安装好`zstandard`
+主要使用的是zstd，需要先安装好`zstandard`和`python-snappy`
+
+数据库也需要启用对应的配置，请自行查阅相关资料。
+
+`<db_username>`请自行替换为数据库的鉴权账号
+
+`<db_password>`请自行替换为鉴权账号对应的密码
+
+`<db_host>`请自行替换为数据库服务器ip或域名，如非默认端口，则需要指定端口号
+
+`<db_name>`请自行替换为数据库名
+
+下同
+
+#### 启用鉴权
 
 ```python
 MONGODB_SETTINGS = {
-    'db': '数据库名',
-    'host': 'mongodb://127.0.0.1/数据库名?compressors=zstd',
-    'username': '用户名',
-    'password': '密码',
+    'host': 'mongodb://<db_username>:<db_password>@<db_host>/<db_name>?compressors=snappy,zlib,zstd',
     'connect': False
 }
+```
+
+#### 无鉴权
+
+```python
+MONGODB_SETTINGS = {
+        'host': 'mongodb://<db_host>/<db_name>?compressors=snappy,zlib,zstd',
+        'connect': False
+    }
 ```
 
 ### 多数据库
