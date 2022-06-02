@@ -2,6 +2,8 @@
 
 ## Linux下的优化
 
+==重要的事情：在docker/k8s环境下，基本上不需要考虑优化的问题，因为任何优化设置都是无效并且可能具有反效果==
+
 ### systemd + circus + lighttpd + sock
 
 >   注意：circus并不推荐在FreeBSD环境下使用，可能会发生circus的假死问题。因此不推荐直接使用。

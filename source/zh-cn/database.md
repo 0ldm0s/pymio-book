@@ -197,7 +197,6 @@ class Feedback(Document):
 import inspect
 from bson import ObjectId
 from mongoengine.queryset import Q, QuerySet
-from flask_mongoengine.pagination import Pagination
 from typing import Optional, Union, List, Tuple, Dict, Any
 from mio.util.Logs import LogHandler
 from mio.util.Helper import get_local_now, timestamp2str
@@ -215,10 +214,11 @@ class UserObj(object):
             query = Q(is_del=False)
             if keyword is not None:
                 query = query & Q(nickname__icontains=keyword)
-            items: QuerySet = User.objects.filter(query).order_by('-id')
+            skip_list: List[str] = []
+            items: QuerySet = User.objects(query).order_by('-id')
             total = items.count()
-            pagination = Pagination(items, page, limit)
-            return pagination.total, pagination.items
+            offset: int = (page - 1) * per_page
+            return total, items.skip(offset).limit(per_page)
         except Exception as e:
             logger.error(e)
             return total, []
@@ -307,6 +307,8 @@ print(info)
 from plugins.quick_cache import QuickCache
 
 is_ok, data = QuickCache().cache(redis_key)
+# 注意：如果在cli内使用的话，需要先传入app来传递上下文
+# 如果需要在子线程内使用，需要在初始化子线程时设为全局变量
 ```
 
 ### 函数方法
