@@ -98,7 +98,7 @@ import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 MIO_HOST = os.environ.get('MIO_HOST', '127.0.0.1')
-MIO_PORT = int(os.environ.get('MIO_PORT', 5000))
+MIO_PORT = int(os.environ.get('MIO_PORT', 5050))
 MIO_SITE_HOST = os.environ.get('MIO_SITE_HOST', MIO_HOST)
 
 
@@ -109,7 +109,7 @@ class Config:
     MIO_MAIL = False
     MIO_SEND_MAIL = False
     MAIL_SUBJECT_PREFIX = os.environ.get('MIO_MAIL_SUBJECT_PREFIX', '[Mio System]')  # 默认邮件标题前缀
-    MAIL_SENDER = os.environ.get('MIO_MAIL_DEFAULT_SENDER', 'Mio System Administrator <admin@example.com>')  # 默认发件人
+    MAIL_DEFAULT_SENDER = os.environ.get('MIO_MAIL_DEFAULT_SENDER', 'Mio System Administrator <admin@example.com>')  # 默认发件人
     MAIL_SERVER = os.environ.get('MIO_MAIL_SERVER', 'localhost')
     MAIL_PORT = os.environ.get('MIO_MAIL_PORT', 25)
     MAIL_USE_TLS = os.environ.get('MIO_MAIL_USE_TLS', False)
@@ -308,7 +308,7 @@ cd <项目根目录>
 python mio/pymio.py
 # 如无异常，应该看到类似的提示文字
 2021-10-04 06:39:30,804 [PID 78559] [INFO] PyMio -> Initializing the system......profile: default
-2021-10-04 06:39:30,807 [PID 78559] [INFO] PyMio -> WebServer listen in http://127.0.0.1:5000
+2021-10-04 06:39:30,807 [PID 78559] [INFO] PyMio -> WebServer listen in http://127.0.0.1:5050
 ```
 
 #### 启动参数
@@ -319,7 +319,7 @@ python mio/pymio.py
 | ---------- | ------------------------------------------------------------ |
 | app_config | 高危参数，不推荐使用。用于调整默认的config文件夹的名字。例如 python mio/pymio.py --app_config=config1 |
 | host       | 绑定的ip，默认为127.0.0.1，如果想被外部访问，可设为具体ip或0.0.0.0 例如 python mio/pymio.py --host=0.0.0.0 |
-| port       | 绑定的端口，默认为5000，如需调整，可直接指定。部分系统，非root不允许绑定低于1024的端口号。<br />例如 python mio/pymio.py --port=8000 |
+| port       | 绑定的端口，默认为5050，如需调整，可直接指定。部分系统，非root不允许绑定低于1024的端口号。<br />例如 python mio/pymio.py --port=8000 |
 | config     | 选择对应的环境配置，可选：`development`开发环境（默认）、`testing`测试环境和`production`生产环境 |
 | pid        | 指定pid文件的路径。如不使用可不传。                          |
 | ds         | 指定unix socket文件路径，仅推荐用于FreeBSD系统。启用该模式会直接禁用host模式，请慎用。 |
